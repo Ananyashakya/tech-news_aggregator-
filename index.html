@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <header class="bg-blue-600 text-white py-4 shadow sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Tech News</h1>
+            <nav>
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="#" id="home-link" class="hover:text-blue-200">Home</a></li>
+                    <li><a href="#" id="saved-articles-link" class="hover:text-blue-200">Saved</a></li>
+                    <li><button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="trending-section" class="py-6 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-xl font-semibold mb-4">Trending Topics</h2>
+            <div id="trending-topics" class="flex space-x-4 overflow-x-auto pb-4"></div>
+        </div>
+    </section>
+
+    <section id="search-section" class="py-6 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4 flex flex-wrap justify-center gap-4">
+            <input type="text" id="search-input" placeholder="Search news..." class="p-2 w-72 rounded border dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500" aria-label="Search">
+            <button id="search-btn" class="p-2 bg-blue-600 text-white rounded hover:bg-blue-700" title="Search">Search</button>
+            <button id="voice-search-btn" class="p-2 bg-green-600 text-white rounded hover:bg-green-700" aria-label="Voice search" title="Voice Search">🎙️</button>
+            <select id="category-selector" class="p-2 rounded border dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500" aria-label="Category" title="Select Category">
+                <option value="technology">Technology</option>
+                <option value="business">Business</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+            </select>
+            <select id="date-filter" class="p-2 rounded border dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500" aria-label="Date filter" title="Filter by Date">
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+            </select>
+            <button id="clear-filters-btn" class="p-2 bg-red-600 text-white rounded hover:bg-red-700" title="Clear Filters">Clear</button>
+        </div>
+    </section>
+
+    <section id="loading-spinner" class="hidden">
+        <div class="spinner"></div>
+    </section>
+
+    <section id="news-feed" class="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite"></section>
+
+    <section id="pagination" class="container mx-auto px-4 py-4 text-center">
+        <button id="load-more" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 hidden" title="Load More Articles">Load More</button>
+    </section>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded shadow hidden" role="alert"></div>
+
+    <div id="article-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden" role="dialog" aria-labelledby="modal-title">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-lg w-full relative">
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100" aria-label="Close modal">✕</button>
+            <h2 id="modal-title" class="text-xl font-semibold mb-4"></h2>
+            <img id="modal-image" class="w-full h-48 object-cover rounded mb-4" alt="Article image">
+            <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-4"></p>
+            <textarea id="modal-notes" class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white mb-4" placeholder="Add notes..." rows="4"></textarea>
+            <div class="flex justify-between mb-4">
+                <button id="save-article-btn" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" title="Save Article">Save Article</button>
+                <a id="modal-link" href="#" target="_blank" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-blue-600 dark:text-blue-400 rounded hover:bg-gray-300 dark:hover:bg-gray-600" title="Read Full Article">Read Full Article</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="saved-articles-section" class="container mx-auto px-4 py-8 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Saved Articles</h2>
+        <div id="saved-articles-feed" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite"></div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-4 text-center">
+        <p>© 2025 Tech News. Powered by <a href="https://newsapi.org" target="_blank" class="underline hover:text-blue-400">NewsAPI</a>.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
