@@ -27,6 +27,3 @@ A modern, responsive web application that fetches and displays the latest techno
 3. Replace the NewsAPI key in `script.js` with your own key from [newsapi.org](https://newsapi.org)
 4. Start exploring the latest tech news!
 
-# License
-
-This project is open for learning and educational use. Feel free to explore, improve, or reuse with credit.
